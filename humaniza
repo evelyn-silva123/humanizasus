@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humaniza SUS – Acolhimento que Salva</title>
+  <style>
+    :root {
+      --rosa-primario: #D81B60;
+      --rosa-secundario: #F48FB1;
+      --rosa-claro: #FFE4E6;
+      --texto-escuro: #5D1049;
+      --sombra: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #FFF8F8, #FFE4E6);
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header, section, footer {
+      padding: 25px;
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--rosa-primario), #EC407A);
+      padding: 15px;
+      text-align: center;
+      box-shadow: var(--sombra);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    h1, h2, h3 {
+      color: var(--texto-escuro);
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--rosa-primario);
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      background: var(--rosa-primario);
+      color: white;
+      padding: 12px 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      border-radius: 30px;
+      transition: all 0.3s;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--sombra);
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: #C2185B;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(216, 27, 96, 0.3);
+    }
+
+    .section {
+      background: white;
+      border-radius: 15px;
+      margin: 20px auto;
+      padding: 30px;
+      max-width: 1200px;
+      box-shadow: var(--sombra);
+      transition: transform 0.3s;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
+    ul {
+      padding-left: 25px;
+      margin: 15px 0;
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    li::before {
+      content: '✓';
+      color: var(--rosa-primario);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-top: 20px;
+      max-width: 100%;
+      box-shadow: var(--sombra);
+    }
+
+    /* Infográfico */
+    .infografico {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .info-item {
+      background: var(--rosa-claro);
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 200px;
+      box-shadow: var(--sombra);
+      transition: all 0.3s;
+    }
+
+    .info-item:hover {
+      transform: scale(1.05);
+      background: white;
+    }
+
+    .numero {
+      font-size: 3rem;
+      color: var(--rosa-primario);
+      font-weight: bold;
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .legenda {
+      display: block;
+      color: var(--texto-escuro);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Depoimentos */
+    #depoimentos {
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+    }
+
+    .depoimentos-container {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .depoimento {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      flex: 1;
+      min-width: 300px;
+      box-shadow: var(--sombra);
+      position: relative;
+    }
+
+    .depoimento::before {
+      content: '"';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 5rem;
+      color: var(--rosa-claro);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .depoimento p {
+      padding-left: 40px;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    .depoimento strong {
+      display: block;
+      margin-top: 15px;
+      color: var(--texto-escuro);
+      font-size: 1.1rem;
+    }
+
+    /* Chat flutuante */
+    #chat-flutuante {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    #chat-flutuante button {
+      background: var(--rosa-primario);
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(216, 27, 96, 0.4);
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+    }
+
+    #chat-flutuante button:hover {
+      background: #C2185B;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(216, 27, 96, 0.5);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px auto;
+        max-width: 250px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .section {
+        padding: 20px;
+        margin: 15px;
+      }
+      
+      #chat-flutuante {
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      #chat-flutuante button {
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Chat flutuante -->
+  <div id="chat-flutuante">
+    <button onclick="abrirChat()">
+      <span>🤖</span> Precisa de Acolhimento? Fale comigo!
+    </button>
+  </div>
+
+  <!-- Navegação -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#acoes">Nossas Ações</a>
+    <a href="#videos">Vídeos Educativos</a>
+    <a href="#chatbot">🤖 Assistente Virtual</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#participe">Participe</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="section">
+    <h1>Humaniza SUS – Acolhimento que Salva</h1>
+    <p>🤝 Acolher é salvar vidas. Vamos transformar o atendimento de saúde com empatia e respeito.</p>
+    <a href="#participe" class="btn">Participe do Projeto</a>
+
+    <div class="infografico">
+      <div class="info-item">
+        <span class="numero">1.427</span>
+        <span class="legenda">Kits distribuídos</span>
+      </div>
+      <div class="info-item">
+        <span class="numero">289</span>
+        <span class="legenda">Desabafos acolhidos</span>
+      </div>
+      <div class="info-item">
+        <span class="numero">92%</span>
+        <span class="legenda">Redução de ansiedade</span>
+      </div>
+    </div>
+
+    <h2>Sobre o Projeto</h2>
+    <p>O Humaniza SUS é uma iniciativa premiada para tornar o atendimento no Sistema Único de Saúde mais humano e respeitoso. Combinamos tecnologia acessível e ações práticas para combater o preconceito, reduzir o medo e garantir dignidade para todos.</p>
+
+    <h2>Problema</h2>
+    <p>🚨 O SUS enfrenta graves problemas de desumanização: filas que causam mortes, discriminação contra idosos e pessoas trans, e falta de acolhimento emocional. Em 2025, foi aprovada uma lei para tornar o atendimento humanizado um princípio do SUS - estamos aqui para transformar essa lei em realidade.</p>
+
+    <h2>Nossa Missão</h2>
+    <p>❤️ Criar pontes entre pacientes e profissionais de saúde, promovendo empatia, respeito e dignidade em cada interação no sistema público de saúde.</p>
+  </section>
+
+  <!-- Nossas Ações -->
+  <section id="acoes" class="section">
+    <h2>🌟 Nossas Ações Transformadoras</h2>
+    <ul>
+      <li><strong>Kits Dignidade:</strong> Distribuição de kits com sabonete, escova e pasta de dentes para garantir higiene básica</li>
+      <li><strong>Murais do Acolhimento:</strong> Instalação de murais com frases motivacionais como "Você não está sozinho" e "Empatia cura"</li>
+      <li><strong>Vídeos Educativos:</strong> Produção de conteúdo com linguagem acessível sobre direitos e procedimentos médicos</li>
+      <li><strong>Rodas de Conversa:</strong> Espaços de diálogo entre pacientes e profissionais para promover escuta ativa</li>
+      <li><strong>AcolheBot:</strong> Assistente virtual 24h para apoio emocional e informação</li>
+    </ul>
+
+    <h3>💡 Tecnologia Humanizada</h3>
+    <p>Utilizamos tecnologia acessível para ampliar nosso impacto: vídeos produzidos com celulares, QR Codes nos murais para acesso rápido a informações, e nosso revolucionário chatbot de apoio emocional.</p>
+  </section>
+
+  <!-- Vídeos Educativos -->
+  <section id="videos" class="section">
+    <h2>🎥 Conhecimento é Empoderamento</h2>
+    <p>Nossos vídeos educativos explicam de forma simples e clara os direitos dos pacientes e procedimentos médicos, reduzindo a ansiedade e o medo do desconhecido.</p>
+    <ul>
+      <li>✅ Direito ao atendimento humanizado</li>
+      <li>✅ Como funciona a ouvidoria do SUS</li>
+      <li>✅ Direitos de populações vulneráveis</li>
+      <li>✅ Preparo para exames e procedimentos</li>
+    </ul>
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <!-- Chatbot -->
+  <section id="chatbot" class="section">
+    <h2>🤖 AcolheBot: Seu Companheiro de Jornada</h2>
+    <p>Nosso assistente virtual oferece apoio emocional 24 horas por dia, informações sobre direitos de saúde e orientação em momentos de dificuldade. Já ajudou mais de 289 pessoas a encontrar conforto e informação.</p>
+    
+    <div style="background-color: #FFF0F5; border-radius: 15px; padding: 20px; margin-top: 20px;">
+      <h3>Experimente nosso protótipo:</h3>
+      <div id="chat-container" style="height: 300px; overflow-y: auto; background: white; border-radius: 10px; padding: 15px; margin: 15px 0;"></div>
+      <div id="options-container" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+      <div id="input-container" style="display: none; margin-top: 15px;">
+        <textarea id="desabafo-input" style="width: 70%; padding: 10px; border-radius: 20px; border: 1px solid #ccc;" placeholder="Escreva aqui o que está sentindo..."></textarea>
+        <button id="send-btn" style="background: var(--rosa-primario); color: white; border: none; border-radius: 20px; padding: 10px 20px; cursor: pointer;">Enviar</button>
+      </div>
+      <button id="end-chat-btn" style="background: #666; color: white; border: none; border-radius: 20px; padding: 10px 20px; cursor: pointer; margin-top: 15px; display: none;">Encerrar desabafo</button>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section id="depoimentos" class="section">
+    <h2>💬 Histórias que Inspiram</h2>
+    <div class="depoimentos-container">
+      <div class="depoimento">
+        <p>"O mural com 'Você não está sozinho' me fez chorar... e me deu força para continuar meu tratamento contra o câncer."</p>
+        <strong>— Maria, 68 anos, São Paulo</strong>
+      </div>
+      <div class="depoimento">
+        <p>"O kit dignidade salvou minha autoestima durante a quimioterapia. Finalmente me senti visto como pessoa, não só como paciente."</p>
+        <strong>— João, 45 anos, Rio de Janeiro</strong>
+      </div>
+      <div class="depoimento">
+        <p>"O AcolheBot me ouviu numa noite de crise. Me acalmou e me orientou a buscar ajuda. Hoje estou em tratamento e recuperando minha vida."</p>
+        <strong>— Ana, 32 anos, Minas Gerais</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Participe -->
+  <section id="participe" class="section">
+    <h2>🙌 Faça Parte Desta Transformação</h2>
+    <p>Junte-se a nós para levar mais humanização ao SUS:</p>
+    <ul>
+      <li><strong>Doe itens de higiene</strong> em nossos pontos de coleta</li>
+      <li><strong>Seja voluntário</strong> na montagem de kits ou criação de murais</li>
+      <li><strong>Produza vídeos educativos</strong> com nossa equipe</li>
+      <li><strong>Divulgue nosso trabalho</strong> em suas redes sociais</li>
+      <li><strong>Adote o projeto</strong> em sua unidade de saúde</li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpUhO5QtLjJ0dTouhfUAgzRNspCvxYhlsWZys-WRrsQMkjsw/viewform?usp=dialog" class="btn">Quero Participar Agora</a>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="section">
+    <h2>📞 Vamos Conversar</h2>
+    <p>Entre em contato para parcerias, doações ou para implementar o projeto em sua cidade:</p>
+    <ul>
+      <li</strong></li>
+      <li>✉️ E-mail: <strong>humanizasus33@gmail.com</strong></li>
+      <li>📱 Instagram: <strong>@_humanizasus_</strong></li>
+      <li>🎵 TikTok: <strong>@humanizasus</strong></li>
+    </ul>
+  </section>
+
+  <!-- Rodapé -->
+  <footer style="background: linear-gradient(to right, var(--rosa-primario), #EC407A); color: white; text-align: center; padding: 30px;">
+    <p style="font-size: 1.3rem; margin-bottom: 15px;">© 2025 Humaniza SUS – Acolhimento que Salva</p>
+    <p>Projeto vencedor da Liga do Sebrae 2025 | Transformando o SUS com empatia e tecnologia</p>
+  </footer>
+
+  <script>
+    // Elementos do DOM
+    const chatContainer = document.getElementById('chat-container');
+    const optionsContainer = document.getElementById('options-container');
+    const inputContainer = document.getElementById('input-container');
+    const desabafoInput = document.getElementById('desabafo-input');
+    const sendBtn = document.getElementById('send-btn');
+    const endChatBtn = document.getElementById('end-chat-btn');
+
+    // Funções para mensagens
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'bot-message';
+      msg.style.cssText = `
+        background: #F8E1EB;
+        padding: 12px 18px;
+        border-radius: 18px;
+        margin: 10px 0;
+        max-width: 80%;
+        align-self: flex-start;
+        animation: fadeIn 0.5s;
+      `;
+      msg.innerHTML = text;
+      chatContainer.appendChild(msg);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'user-message';
+      msg.style.cssText = `
+        background: var(--rosa-primario);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 18px;
+        margin: 10px 0;
+        max-width: 80%;
+        align-self: flex-end;
+        animation: fadeIn 0.5s;
+      `;
+      msg.textContent = text;
+      chatContainer.appendChild(msg);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function clearOptions() {
+      optionsContainer.innerHTML = '';
+    }
+
+    function createOption(text, onClick) {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.style.cssText = `
+        background: var(--rosa-primario);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 5px;
+        font-size: 1rem;
+      `;
+      btn.textContent = text;
+      btn.onclick = onClick;
+      optionsContainer.appendChild(btn);
+    }
+
+    // Sistema avançado de respostas
+    function respostaDesabafo(texto) {
+      const txt = texto.toLowerCase();
+      
+      // Mapa de emoções → respostas personalizadas
+      const mapEmocoes = {
+        tristeza: {
+          palavras: /(triste|chora?r|vazio|perdi|solit|sozinho|deprim)/,
+          respostas: [
+            "💔 Sua dor é válida. Quer compartilhar o que está pesando no seu coração?",
+            "🌧️ Chorar também é cura. Estou aqui nessa jornada com você",
+            "🫂 Você não está sozinho(a). Estou aqui para te ouvir, pode continuar..."
+          ]
+        },
+        ansiedade: {
+          palavras: /(ansio|preocupa|nervo|medo|ataque|pânico|preocupad)/,
+          respostas: [
+            "🌬️ Respire comigo: inspire... segure... expire. Repita 3x",
+            "🧘 Vamos focar no agora? O que você precisa neste exato momento?",
+            "⏳ Uma coisa de cada vez. Conte-me o que mais te aflige..."
+          ]
+        },
+        dor_fisica: {
+          palavras: /(dói|dor|incômod|sinto do|queima|dolor)/,
+          respostas: [
+            "⚠️ Isso é importante! Você já foi atendido(a)?",
+            "🏥 Posso te ajudar a encontrar uma UBS aberta agora?",
+            "💊 Há quanto tempo sente isso? (Isso ajuda os profissionais)"
+          ]
+        },
+        raiva: {
+          palavras: /(raiva|ódio|irritad|frustra|revoltad)/,
+          respostas: [
+            "💥 Sua raiva mostra que algo importa para você. Vamos transformá-la em força?",
+            "🗣️ Às vezes, gritar no travesseiro ajuda. Quer que eu conte até 3?",
+            "🌋 Vamos canalizar essa energia? Conte-me o que aconteceu"
+          ]
+        }
+      };
+
+      // Detecção de crise suicida (protocolo de emergência)
+      if (/(suicíd|matar|morrer|acabar com tudo|não aguento)/i.test(txt)) {
+        return `🚨 VOCÊ É IMPORTANTE! LIGUE AGORA para o CVV: 188 
+                <br>Ou acesse: www.cvv.org.br 
+                <br>💝 Posso te acompanhar até você ligar?`;
+      }
+
+      // Encontrar melhor correspondência emocional
+      for (const [emocao, dados] of Object.entries(mapEmocoes)) {
+        if (dados.palavras.test(txt)) {
+          return dados.respostas[Math.floor(Math.random() * dados.respostas.length)];
+        }
+      }
+
+      // Resposta padrão com validação emocional
+      return "💌 Obrigada por confiar em mim. Cada palavra sua fortalece nossa missão!";
+    }
+
+    // Função para simular pensamento do bot
+    function botThinking() {
+      return new Promise((resolve) => {
+        const thinkingMsg = document.createElement('div');
+        thinkingMsg.style.cssText = `
+          align-self: flex-start;
+          color: var(--rosa-primario);
+          font-style: italic;
+          padding: 10px 15px;
+          border-radius: 15px;
+          background: #FCE4EC;
+          max-width: 60%;
+          margin: 5px 0;
+          user-select: none;
+        `;
+        thinkingMsg.textContent = '🤖 Pensando';
+        chatContainer.appendChild(thinkingMsg);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        let dots = 0;
+        const interval = setInterval(() => {
+          dots = (dots + 1) % 4;
+          thinkingMsg.textContent = '🤖 Pensando' + '.'.repeat(dots);
+        }, 500);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          thinkingMsg.remove();
+          resolve();
+        }, 2000);
+      });
+    }
+
+    // Fluxo do chat
+    function startChat() {
+      chatContainer.innerHTML = '';
+      addBotMessage('❤️ Olá! Eu sou o AcolheBot. Estou aqui para te ouvir com carinho. Como posso te ajudar hoje?');
+      clearOptions();
+      createOption('💬 Quero desabafar', desabafarStep);
+      createOption('❓ Tirar dúvida sobre o SUS', duvidasStep);
+      createOption('📋 Ver direitos do paciente', direitosStep);
+      createOption('📞 Contatos úteis', contatosStep);
+      inputContainer.style.display = 'none';
+      endChatBtn.style.display = 'none';
+    }
+
+    async function desabafarStep() {
+      addUserMessage('Quero desabafar');
+      addBotMessage('❤️ Pode me contar o que está sentindo? Estou aqui para você.');
+
+      clearOptions();
+      inputContainer.style.display = 'flex';
+      desabafoInput.value = '';
+      desabafoInput.focus();
+      sendBtn.disabled = false;
+      endChatBtn.style.display = 'block';
+
+      sendBtn.onclick = async () => {
+        const texto = desabafoInput.value.trim();
+        if (!texto) return;
+        
+        addUserMessage(texto);
+        desabafoInput.value = '';
+        sendBtn.disabled = true;
+
+        await botThinking();
+        addBotMessage(respostaDesabafo(texto));
+        sendBtn.disabled = false;
+        
+        // Mostrar opções após resposta
+        clearOptions();
+        createOption('Continuar desabafando', () => desabafoInput.focus());
+        createOption('Encontrar CAPS próximo', encontrarCAPS);
+        createOption('Voltar ao início', startChat);
+      };
+
+      endChatBtn.onclick = () => {
+        addBotMessage('❤️ Obrigado por compartilhar comigo. Sempre que precisar, estou aqui para você.');
+        inputContainer.style.display = 'none';
+        endChatBtn.style.display = 'none';
+        clearOptions();
+        createOption('Quero saber meus direitos', direitosStep);
+        createOption('Preciso de ajuda no atendimento', ajudaAtendimentoStep);
+        createOption('Voltar ao início', startChat);
+      };
+    }
+
+    function encontrarCAPS() {
+      addUserMessage('Encontrar CAPS próximo');
+      addBotMessage('Vou te ajudar! Compartilhe sua localização aproximada (ex: "São Paulo, Zona Leste")');
+      
+      // Simular busca
+      setTimeout(() => {
+        addBotMessage('Encontrei: <strong>CAPS III Viver Bem</strong><br>📍 Rua das Flores, 123 - São Paulo<br>📞 (11) 2222-3333<br>⏰ 24 horas');
+      }, 2000);
+    }
+
+    function duvidasStep() {
+      addUserMessage('Tirar dúvida sobre o SUS');
+      addBotMessage('Sobre o que você quer saber?');
+
+      clearOptions();
+      createOption('Como agendar consulta?', () => {
+        addUserMessage('Como agendar consulta?');
+        addBotMessage('Você pode agendar de três formas:<br>1. Na UBS mais próxima<br>2. Pelo Disque Saúde 136<br>3. Pelo aplicativo Meu SUS');
+        clearOptions();
+        createOption('Voltar às dúvidas', duvidasStep);
+        createOption('Voltar ao início', startChat);
+      });
+      createOption('Como funciona a fila?', () => {
+        addUserMessage('Como funciona a fila?');
+        addBotMessage('O atendimento segue prioridade por gravidade (Classificação de Risco). Casos mais urgentes são atendidos primeiro, mas todos têm direito a atendimento.');
+        clearOptions();
+        createOption('Voltar às dúvidas', duvidasStep);
+        createOption('Voltar ao início', startChat);
+      });
+      createOption('Voltar ao início', startChat);
+    }
+
+    function direitosStep() {
+      addUserMessage('Ver direitos do paciente');
+      addBotMessage('✅ Todo paciente tem direito a atendimento digno e humanizado');
+      addBotMessage('✅ Você não pode sofrer discriminação por qualquer motivo');
+      addBotMessage('✅ Tem direito a acompanhante se for menor ou idoso');
+      addBotMessage('✅ Pode registrar reclamações na Ouvidoria (0800-644-5678)');
+
+      clearOptions();
+      createOption('Mais informações', () => {
+        addBotMessage('Acesse o Portal do SUS: www.gov.br/saude');
+      });
+      createOption('Voltar ao início', startChat);
+    }
+
+    function contatosStep() {
+      addUserMessage('Contatos úteis');
+      addBotMessage('📞 <strong>Disque Saúde:</strong> 136');
+      addBotMessage('📞 <strong>Ouvidoria SUS:</strong> 0800-644-5678');
+      addBotMessage('📱 <strong>CVV (apoio emocional):</strong> 188');
+      addBotMessage('📍 Secretaria Municipal de Saúde da sua cidade');
+
+      clearOptions();
+      createOption('Voltar ao início', startChat);
+    }
+
+    function ajudaAtendimentoStep() {
+      addUserMessage('Quero ajuda no atendimento');
+      addBotMessage('Se você teve um atendimento inadequado:<br>1. Registre na Ouvidoria (0800-644-5678)<br>2. Procure a Defensoria Pública<br>3. Entre em contato conosco pelo WhatsApp');
+
+      clearOptions();
+      createOption('Contatos úteis', contatosStep);
+      createOption('Ver direitos do paciente', direitosStep);
+      createOption('Voltar ao início', startChat);
+    }
+
+    // Função para abrir o chat
+    function abrirChat() {
+      document.getElementById('chatbot').scrollIntoView({behavior: 'smooth'});
+      startChat();
+    }
+
+    // Iniciar o chat quando a página carregar
+    window.onload = startChat;
+  </script>
+</body>
+</html>
